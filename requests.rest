@@ -1,0 +1,10 @@
+POST http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "Pâmela",
+    "email": "pam@email.com",
+    "password": "pamela1215"
+}
+
+### 
