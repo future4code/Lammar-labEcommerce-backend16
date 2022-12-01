@@ -1,3 +1,8 @@
+GET  http://localhost:3003/users
+content-type: application/json
+
+### 
+
 POST http://localhost:3003/users
 content-type: application/json
 
@@ -5,6 +10,17 @@ content-type: application/json
     "name": "Pâmela",
     "email": "pam@email.com",
     "password": "pamela1215"
+}
+
+### 
+
+POST http://localhost:3003/products
+content-type: application/json
+
+{
+    "name": "Camisa psg IV 20/21",
+    "price": 300,
+    "image_url": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/867/677/products/camisa-psg-iv-fourth-4-21-22-rosa-roxo-roxa-2021-jordan-nike-torcedor-masculina-neymarjr-neymar-messi-paris-saint-germain1-54652b9a0db43c043d16448828610847-640-0.png"
 }
 
 ### 
