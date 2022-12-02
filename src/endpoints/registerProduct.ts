@@ -7,6 +7,11 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
     try {
         const { name, price, image_url } = req.body
 
+        if (price <= 0) {
+            errorCode = 422
+            throw new Error("O valor do parâmetro 'price' deve ser maior que zero!")
+        }
+
         if (!name) {
             errorCode = 422
             throw new Error(
@@ -33,17 +38,17 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
 
         if (typeof name !== "string") {
             errorCode = 422
-            throw new Error("O parâmetro 'name' deve ser do tipo string!")
+            throw new Error("O valor do parâmetro 'name' deve ser do tipo string!")
         }
 
         if (typeof price !== "number") {
             errorCode = 422
-            throw new Error("O parâmetro 'price' deve ser do tipo number!")
+            throw new Error("O valor do parâmetro 'price' deve ser do tipo number!")
         }
 
         if (typeof image_url !== "string") {
             errorCode = 422
-            throw new Error("O parâmetro 'image_url' deve ser do tipo string!")
+            throw new Error("O valor do parâmetro 'image_url' deve ser do tipo string!")
         }
 
         const result = await connection.raw(`
