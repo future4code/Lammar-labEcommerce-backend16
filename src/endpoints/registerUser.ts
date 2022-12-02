@@ -33,17 +33,27 @@ export const registerUser = async ( req: Request, res: Response ): Promise<void>
 
         if (typeof name !== "string") {
             errorCode = 422
-            throw new Error("O parâmetro 'name' deve ser do tipo string!")
+            throw new Error("O valor do parâmetro 'name' deve ser do tipo string!")
         }
 
         if (typeof email !== "string") {
             errorCode = 422
-            throw new Error("O parâmetro 'email' deve ser do tipo string!")
+            throw new Error("O valor do parâmetro 'email' deve ser do tipo string!")
         }
 
         if (typeof password !== "string") {
             errorCode = 422
-            throw new Error("O parâmetro 'password' deve ser do tipo string!")
+            throw new Error("O valor do parâmetro 'password' deve ser do tipo string!")
+        }
+
+        if (password.includes(" ") === true) {
+            errorCode = 422
+            throw new Error("O valor do parâmetro 'password' não pode conter espaços!")
+        }
+
+        if (password.length < 8) {
+            errorCode = 422
+            throw new Error("O valor do parâmetro 'password' deve ter 8 caracteres ou mais!")
         }
 
         const result = await connection.raw(`
@@ -63,7 +73,7 @@ export const registerUser = async ( req: Request, res: Response ): Promise<void>
             VALUES(
                 "${Date.now().toString()}", 
                 "${name}", 
-                "${email}", 
+                "${email.trim()}", 
                 "${password}" 
             );
         `)
