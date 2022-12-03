@@ -56,7 +56,9 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
             WHERE id = "${product_id}";
         `)
 
-        if (resultProduct[0].length <= 0) {
+        const registeredProduct = resultProduct[0]
+
+        if (registeredProduct.length <= 0) {
             errorCode = 422
             throw new Error(
                 `O valor do parâmetro 'product_id' não foi informado corretamente ou é inválido!
@@ -64,17 +66,15 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
                 Verifique o dado passado e informe-o corretamente!`
             )
         }
-        
-        const nameProduct = resultProduct[0][0].name
-        const priceProduct = resultProduct[0][0].price
-        const totalPrice = priceProduct * quantity
 
         const resultUser = await connection.raw(`
             SELECT * FROM labecommerce_users
             WHERE id = "${user_id}";
         `)
+
+        const registeredUser = resultUser[0]
         
-        if (resultUser[0].length <= 0) {
+        if (registeredUser.length <= 0) {
             errorCode = 422
             throw new Error(
                 `O valor do parâmetro 'user_id' não foi informado corretamente ou é inválido!
@@ -82,6 +82,10 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
                 Verifique o dado passado e informe-o corretamente!`
             )
         }
+
+        const nameProduct = resultProduct[0][0].name
+        const priceProduct = resultProduct[0][0].price
+        const totalPrice = priceProduct * quantity
 
         await connection.raw(`
             INSERT INTO labecommerce_purchases (id, user_id, product_id, quantity, total_price)
@@ -94,8 +98,8 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
             );
         `)
 
-        res.status(201).send(`Compra realizada com sucesso! Comprou ${quantity} "${nameProduct}", 
-        valor Total da compra: R$ ${totalPrice}.`)
+        res.status(201).send(`Compra realizada com sucesso! Comprou ${quantity} "${nameProduct}",
+        no valor de R$ ${priceProduct}. Valor Total da compra: R$ ${totalPrice}.`)
 
     } catch (err: any) {
         res.status(errorCode).send(err.message)
