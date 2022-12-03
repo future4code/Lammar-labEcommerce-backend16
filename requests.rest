@@ -3,7 +3,7 @@ content-type: application/json
 
 ### 
 
-GET http://localhost:3003/products
+GET http://localhost:3003/products?order=asc&&search=tenis
 content-type: application/json
 
 ### 
