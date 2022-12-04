@@ -3,12 +3,12 @@ content-type: application/json
 
 ### 
 
-GET http://localhost:3003/products?order=asc&&search=tenis
+GET http://localhost:3003/products
 content-type: application/json
 
 ### 
 
-GET http://localhost:3003/users/01/purchases
+GET http://localhost:3003/users/1669922794917/purchases
 content-type: application/json
 
 ### 
@@ -17,9 +17,9 @@ POST http://localhost:3003/users
 content-type: application/json
 
 {
-    "name": "Marta",
-    "email": "marta@email.com",
-    "password": "marta0010362"
+    "name": "Romario",
+    "email": "romario@email.com",
+    "password": "romario123"
 }
 
 ### 
@@ -28,9 +28,9 @@ POST http://localhost:3003/products
 content-type: application/json
 
 {
-    "name": "Camiseta Liverpool XPS Sports",
-    "price": 64,
-    "image_url": "https://imgcentauro-a.akamaihd.net/900x900/9713973I/camiseta-liverpool-xps-sports-masculina-warren-img.jpg"
+    "name": "Luva De Pedreiro",
+    "price": 54,
+    "image_url": "https://a-static.mlcdn.com.br/800x560/kit-3-par-luva-cara-da-luva-de-pedreiro-la-4-fios-pigmentada-luva-tricotada/onshopatacadovarejo/73bb0204cc8811eca12b4201ac18506b/da392831e1a9cb0b5396582086f293c8.jpeg"
 }
 
 ### 
@@ -39,9 +39,9 @@ POST http://localhost:3003/purchases
 content-type: application/json
 
 {
-    "user_id": "03",
-    "product_id": "02",
-    "quantity": 2
+    "user_id": "01",
+    "product_id": "1670111610065",
+    "quantity": 1
 }
 
 ### 

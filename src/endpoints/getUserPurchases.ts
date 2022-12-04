@@ -14,23 +14,22 @@ export const getUserPurchases = async ( req: Request, res: Response ): Promise<v
 
         const registeredUser = resultUser[0]
         
-        if (registeredUser.length <= 0) {
-            errorCode = 401
+        if (registeredUser.length < 1) {
+            errorCode = 422
             throw new Error(
-                `O valor do parâmetro não foi informado corretamente ou é inválido!
-                Nenhum usuário encontrado no banco de dados, referente ao id informado.
-                Verifique o dado passado e informe-o corretamente!`
+                `Nenhum usuário foi encontrado no banco de dados, referente ao id informado.
+                Verifique se o valor informado no parâmetro 'user_id' está correto!`
             )
         }
 
-        const result = await connection.raw(`
+        const resultPurchases = await connection.raw(`
             SELECT * FROM  labecommerce_purchases
             WHERE user_id = "${userId}";
         `)
 
-        const userPurchases= result[0]
+        const userPurchases= resultPurchases[0]
 
-        if (userPurchases.length <= 0) {
+        if (userPurchases.length < 1) {
             res.status(200).send("Este usuário ainda não fez nenhuma compra!")
         } else{
             res.status(200).send(userPurchases)

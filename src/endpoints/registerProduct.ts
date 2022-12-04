@@ -15,7 +15,7 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
         if (!name) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'name' não foi informado ou está incorreto!`
             )
         }
@@ -23,7 +23,7 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
         if (!price) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'price' não foi informado ou está incorreto!`
             )
         }
@@ -31,7 +31,7 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
         if (!image_url) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'image_url' não foi informado ou está incorreto!`
             )
         }
@@ -53,14 +53,14 @@ export const registerProduct = async ( req: Request, res: Response ): Promise<vo
 
         const result = await connection.raw(`
             SELECT * FROM labecommerce_products 
-            WHERE name LIKE "%${name}" OR image_url LIKE "%${image_url}"
+            WHERE name LIKE "%${name}" OR image_url LIKE "%${image_url}";
         `)
 
         const registeredProduct = result[0]
 
         if (registeredProduct.length > 0) {
             errorCode = 409
-            throw new Error("Esse produto já foi cadastrado!")
+            throw new Error("Este produto já foi cadastrado!")
         }
 
         await connection.raw(`

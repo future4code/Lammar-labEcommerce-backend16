@@ -25,8 +25,11 @@ export const getAllProducts = async ( req: Request, res: Response ): Promise<voi
         const allProducts = result[0]
 
         if (allProducts.length < 1) {
-            errorCode = 404
-            throw new Error("Produto não encontrado no banco de dados.")
+            errorCode = 422
+            throw new Error(
+                `Produto não encontrado no banco de dados. 
+                Verifique se o valor informado no parâmetro 'search' está correto!`
+            )
         }
 
         res.status(200).send(allProducts)
