@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "echo Transpilando... && tsc && echo Rodando... && node ./build/index.js",
+    "start": "tsc && node ./build/index.js",
     "dev": "ts-node-dev ./src/index.ts"
   },
   "repository": {
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/future4code/Lammar-labEcommerce-backend16.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "H Douglas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/future4code/Lammar-labEcommerce-backend16/issues"
