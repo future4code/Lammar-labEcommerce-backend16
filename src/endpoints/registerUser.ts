@@ -10,7 +10,7 @@ export const registerUser = async ( req: Request, res: Response ): Promise<void>
         if (!name) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'name' não foi informado ou está incorreto!`
             )
         }
@@ -18,7 +18,7 @@ export const registerUser = async ( req: Request, res: Response ): Promise<void>
         if (!email) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'email' não foi informado ou está incorreto!`
             )
         }
@@ -26,7 +26,7 @@ export const registerUser = async ( req: Request, res: Response ): Promise<void>
         if (!password) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'password' não foi informado ou está incorreto!`
             )
         }

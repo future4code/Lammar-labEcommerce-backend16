@@ -6,7 +6,7 @@ export const getAllUsers = async ( req: Request, res: Response ): Promise<void> 
 
     try {
         const result = await connection.raw(`
-            SELECT * FROM labecommerce_users 
+            SELECT * FROM labecommerce_users; 
         `)
 
         const allUsers = result[0]

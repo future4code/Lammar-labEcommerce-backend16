@@ -10,7 +10,7 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
         if (!user_id) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'user_id' não foi informado ou está incorreto!`
             )
         }
@@ -18,15 +18,15 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
         if (!product_id) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
-                Parâmetro 'product_id' não foi informado ou está incorreto!`
+                `Por favor, insira todos os parâmetros corretamente. 
+                Parâmetro, 'product_id' não foi informado ou está incorreto!`
             )
         }
 
         if (!quantity) {
             errorCode = 422
             throw new Error(
-                `Por favor insira todos os parâmetros corretamente. 
+                `Por favor, insira todos os parâmetros corretamente. 
                 Parâmetro 'quantity' não foi informado ou está incorreto!`
             )
         }
@@ -46,9 +46,9 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
             throw new Error("O valor do parâmetro 'quantity' deve ser do tipo number!")
         }
 
-        if (quantity <= 0) {
+        if (quantity < 1) {
             errorCode = 422
-            throw new Error("O valor do parâmetro 'quantity' deve ser maior que zero!")
+            throw new Error("O valor do parâmetro 'quantity' deve ser maior ou igual a 1!")
         }
 
         const resultProduct = await connection.raw(`
@@ -58,12 +58,11 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
 
         const registeredProduct = resultProduct[0]
 
-        if (registeredProduct.length <= 0) {
+        if (registeredProduct.length < 1) {
             errorCode = 422
             throw new Error(
-                `O valor do parâmetro 'product_id' não foi informado corretamente ou é inválido!
-                Nenhum produto encontrado no banco de dados, referente ao id informado.
-                Verifique o dado passado e informe-o corretamente!`
+                `Nenhum produto foi encontrado no banco de dados, referente ao id informado.
+                Verifique se o valor informado no parâmetro 'product_id' está correto!`
             )
         }
 
@@ -74,15 +73,15 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
 
         const registeredUser = resultUser[0]
         
-        if (registeredUser.length <= 0) {
+        if (registeredUser.length < 1) {
             errorCode = 422
             throw new Error(
-                `O valor do parâmetro 'user_id' não foi informado corretamente ou é inválido!
-                Nenhum usuário encontrado no banco de dados, referente ao id informado.
-                Verifique o dado passado e informe-o corretamente!`
+                `Nenhum usuário foi encontrado no banco de dados, referente ao id informado.
+                Verifique se o valor informado no parâmetro 'user_id' está correto!`
             )
         }
-
+        
+        const nameUser = resultUser[0][0].name
         const nameProduct = resultProduct[0][0].name
         const priceProduct = resultProduct[0][0].price
         const totalPrice = priceProduct * quantity
@@ -98,8 +97,10 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
             );
         `)
 
-        res.status(201).send(`Compra realizada com sucesso! Comprou ${quantity} "${nameProduct}",
-        no valor de R$ ${priceProduct}. Valor Total da compra: R$ ${totalPrice}.`)
+        res.status(201).send(
+            `Compra realizada com sucesso! ${nameUser} comprou ${quantity} "${nameProduct}",
+            no valor de R$ ${priceProduct}. Valor Total da compra: R$ ${totalPrice}.`
+        )
 
     } catch (err: any) {
         res.status(errorCode).send(err.message)
