@@ -19,7 +19,7 @@ export const registerPurchase = async ( req: Request, res: Response ): Promise<v
             errorCode = 422
             throw new Error(
                 `Por favor, insira todos os parâmetros corretamente. 
-                Parâmetro, 'product_id' não foi informado ou está incorreto!`
+                Parâmetro 'product_id' não foi informado ou está incorreto!`
             )
         }
 
