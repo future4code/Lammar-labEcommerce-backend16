@@ -12,23 +12,28 @@
 
 ### Endpoints: 
 
-- GET Get all users
-- GET Get all products
-- GET Get user purchases
-- POST Register user
-- POST Register product
-- POST Register purchase
+:white_check_mark: [GET Get all users](getAllUsers)
+<br/>
+:white_check_mark: [GET Get all products](getAllProducts)
+<br/>
+:white_check_mark: [GET Get user purchases](getUserPurchases)
+<br/>
+:white_check_mark: [POST Register user](registerUser)
+<br/>
+:white_check_mark: [POST Register product](registerProduct)
+<br/>
+:white_check_mark: [POST Register purchase](registerPurchase)
 
 #
 
-### GET Get all users:
+### <a name=getAllUsers><a/> GET Get all users:
 <p>Endpoint que retorna todos os usuários cadastrados no banco de dados. </p>
 
 ![getAllUsers](https://user-images.githubusercontent.com/102442943/205583613-6a921644-6018-466c-9ad3-1ea74b27276a.png)
 
 #
 
-### GET Get all products:
+### <a name=getAllProducts><a/> GET Get all products:
 <p>Endpoint que retorna todos os produtos cadastrados no banco de dados. </p>
 
 ![getAllProducts(sem_parametros)](https://user-images.githubusercontent.com/102442943/205584178-946dbdd3-c245-4444-badd-bcf86ff47da0.png)
@@ -42,7 +47,7 @@
 
 #
 
-### GET Get user purchases:
+### <a name=getUserPurchases><a/> GET Get user purchases:
 <p>Endpoint que retorna todas as compras feitas por um determinado usuário, através de seu id. </p>
 
 - Recebe o id via path params.
@@ -51,7 +56,7 @@
 
 #
 
-### POST Register user:
+### <a name=registerUser><a/> POST Register user:
 <p>Endpoint que cadastra novos usuários no banco de dados. </p>
 
 - Recebe name, email e password do usuário, através do body.
@@ -60,7 +65,7 @@
 
 #
 
-### POST Register product:
+### <a name=registerProduct><a/> POST Register product:
 <p>Endpoint que cadastra novos produtos no banco de dados. </p>
 
 - Recebe name, price e image_url do produto, através do body.
@@ -69,7 +74,7 @@
 
 #
 
-### POST Register purchaset:
+### <a name=registerPurchase><a/> POST Register purchaset:
 <p>Endpoint que cadastra novas compras no banco de dados. </p>
 
 <p>Recebe user_id, product_id e quantity da compra, através do body. </p>
