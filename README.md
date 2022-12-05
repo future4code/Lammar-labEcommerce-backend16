@@ -41,7 +41,7 @@
 <p>Pode receber dois parâmetros por query params: order e search. </p>
 
 - Order: recebe ASC ou DESC e retornar todos os produtos em ordem alfabética de forma crescente ou decrescente, respectivamente.
-- search: Recebe uma string e retorna todos os produtos que contenha a mesma em seu nome.
+- search: recebe uma string e retorna todos os produtos que contenha a mesma em seu nome.
 
 ![getAllProducts(+order+serach)](https://user-images.githubusercontent.com/102442943/205584539-d794c8ee-3467-4c88-b38f-bdd42bed00eb.png)
 
@@ -93,7 +93,4 @@
 - TypeScript
 - Knex
 - Express
-- Cors
-- Dotenv
-- Ts-node-dev
 - Mysql
