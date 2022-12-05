@@ -5,8 +5,8 @@
 
 #
 
-### Deploy:  [deploy labeEcommerce](https://labecommerce-backend-12ib.onrender.com) 
 ### Documentação:  [documentação labeEcommerce ](https://documenter.getpostman.com/view/22530775/2s8YzMYQuz)
+### Deploy:  [deploy labeEcommerce](https://labecommerce-backend-12ib.onrender.com) 
 
 #
 
@@ -87,18 +87,13 @@
 
 #
 
+### Ferramentas e Tecnologias Utilizadas:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Node.js
+- TypeScript
+- Knex
+- Express
+- Cors
+- Dotenv
+- Ts-node-dev
+- Mysql
