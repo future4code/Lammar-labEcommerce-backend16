@@ -1,0 +1,47 @@
+GET http://localhost:3003/users
+content-type: application/json
+
+### 
+
+GET http://localhost:3003/products
+content-type: application/json
+
+### 
+
+GET http://localhost:3003/users/1669922794917/purchases
+content-type: application/json
+
+### 
+
+POST http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "Romario",
+    "email": "romario@email.com",
+    "password": "romario123"
+}
+
+### 
+
+POST http://localhost:3003/products
+content-type: application/json
+
+{
+    "name": "Luva De Pedreiro",
+    "price": 54,
+    "image_url": "https://a-static.mlcdn.com.br/800x560/kit-3-par-luva-cara-da-luva-de-pedreiro-la-4-fios-pigmentada-luva-tricotada/onshopatacadovarejo/73bb0204cc8811eca12b4201ac18506b/da392831e1a9cb0b5396582086f293c8.jpeg"
+}
+
+### 
+
+POST http://localhost:3003/purchases
+content-type: application/json
+
+{
+    "user_id": "01",
+    "product_id": "1670111610065",
+    "quantity": 1
+}
+
+### 
